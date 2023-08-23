@@ -5,16 +5,17 @@ import ColorButton from './ColorButton';
 
 type Props = {
   providers: Record<string, ClientSafeProvider>;
+  callbackUrl: string;
 };
 
-export default function SignIn({ providers }: Props) {
+export default function SignIn({ providers, callbackUrl }: Props) {
   return (
     <>
       {Object.values(providers).map((provider) => (
         <ColorButton
           key={provider.name}
           text={`Sign in with ${provider.name}`}
-          clickFn={() => signIn(provider.id)}
+          clickFn={() => signIn(provider.id, { callbackUrl })}
           size='big'
         />
       ))}
