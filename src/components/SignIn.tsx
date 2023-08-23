@@ -15,6 +15,7 @@ export default function SignIn({ providers }: Props) {
           key={provider.name}
           text={`Sign in with ${provider.name}`}
           clickFn={() => signIn(provider.id)}
+          size='big'
         />
       ))}
     </>
