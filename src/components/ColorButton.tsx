@@ -1,9 +1,9 @@
 type Props = {
   text: string;
   clickFn: () => void;
-  size: 'small' | 'big';
+  size?: 'small' | 'big';
 };
-export default function ColorButton({ text, clickFn, size }: Props) {
+export default function ColorButton({ text, clickFn, size = 'small' }: Props) {
   return (
     <div
       className={`rounded-md bg-gradient-to-bl from-fuchsia-600 via-rose-500 to-amber-300 ${
