@@ -1,3 +1,4 @@
+import { addUser } from '@/app/service/user';
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
@@ -9,6 +10,11 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
+    async signIn({ user: { id, name, email, image } }) {
+      if (!email) return false;
+      addUser({ id, name: name || '', email, username: email.split('@')[0] });
+      return true;
+    },
     async session({ session }) {
       const user = session?.user;
       if (user) {
