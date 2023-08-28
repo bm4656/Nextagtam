@@ -34,7 +34,7 @@ export default function Navbar() {
   const { data: session } = useSession();
   const user = session?.user;
   return (
-    <div className='flex justify-between items-center px-6'>
+    <div className='flex justify-between items-center px-6 border-solid border-b border-b-neutral-200'>
       <Link href={'/'} className='text-3xl font-bold'>
         Nextagram
       </Link>
@@ -50,7 +50,7 @@ export default function Navbar() {
           {user && (
             <li>
               <Link href={`/user/${user.username}`}>
-                <Avatar image={user.image} />
+                <Avatar image={user.image} size='small' highlight />
               </Link>
             </li>
           )}
