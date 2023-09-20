@@ -29,7 +29,7 @@ export async function getUserByUsername(username: string) {
       "id":_id,
       following[] -> {username,image},
       followers[] -> {username,image},
-      "bookmarks": bookmarks -> _id 
+      "bookmarks": bookmarks[] -> _id 
     }`
   );
 }
