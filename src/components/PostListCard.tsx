@@ -1,10 +1,8 @@
 import { SimplePost } from '@/model/post';
 import Avatar from './Avatar';
 import Image from 'next/image';
-import HeartIcon from './ui/icons/HeartIcon';
-import BookmarkIcon from './ui/icons/BookmarkIcon';
-import { parseDate } from '@/util/date';
-import SmileIcon from './ui/icons/SmileIcon';
+import CommentForm from './CommentForm';
+import ActionBar from './ActionBar';
 
 type Props = {
   post: SimplePost;
@@ -24,29 +22,13 @@ export default function PostListCard({ post }: Props) {
         width={500}
         height={500}
       />
-      <div className='flex items-center justify-between p-4'>
-        <HeartIcon />
-        <BookmarkIcon />
-      </div>
-      <div className='px-4 py-1'>
-        <p className='font-bold text-gray-800'>
-          {likes?.length ?? 0} {likes?.length > 1 ? 'likes' : 'like'}
-        </p>
-        <p>
-          <span className='font-bold text-gray-800 mr-2'>{username}</span>
-          {text}
-        </p>
-        <p className='my-2 text-sm text-neutral-400'>{parseDate(createdAt)}</p>
-      </div>
-      <form className='flex border-t border-neutral-300 items-center px-2'>
-        <SmileIcon />
-        <input
-          className='w-full border-none outline-none p-3'
-          type='text'
-          placeholder='Add a comment...'
-        />
-        <button className='font-bold text-sky-600 ml-2'>Post</button>
-      </form>
+      <ActionBar
+        likes={likes}
+        username={username}
+        text={text}
+        createdAt={createdAt}
+      />
+      <CommentForm />
     </article>
   );
 }
