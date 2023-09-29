@@ -22,9 +22,9 @@ export default function PostList() {
       )}
       <ul>
         {posts &&
-          posts.map((post) => (
+          posts.map((post, index) => (
             <li key={post.id} className='mb-4'>
-              <PostListCard post={post} />
+              <PostListCard post={post} priority={index < 2} />
             </li>
           ))}
       </ul>
